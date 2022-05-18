@@ -1,6 +1,6 @@
 [package]
 name = "cell-ref"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 description = "Cell type with methods for by-reference mutation"
 documentation = "https://docs.rs/cell-ref"

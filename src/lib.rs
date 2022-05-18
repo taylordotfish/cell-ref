@@ -27,15 +27,11 @@
 //! [`Copy`]. A [`get`] method is also available for types that are both
 //! [`Default`] and [`Clone`].
 //!
-//! [std-cell]: StdCell
-//! [cell-ext]: CellExt
-//! [`with`]: Cell::with
-//! [`with_mut`]: Cell::with_mut
-//! [std-get]: StdCell::get
-//! [std-set]: StdCell::set
-//! [`get`]: Cell::get
+//! This crate depends only on [`core`], so it can be used inside `no_std`
+//! environments.
 //!
-//! # Example
+//! Example
+//! -------
 //!
 //! ```rust
 //! use cell_ref::{Cell, CellExt};
@@ -46,9 +42,17 @@
 //!
 //! let c2 = Cell::new(vec![1, 2, 3]);
 //! c2.with_mut(|v| v.push(4)); // Works even though `Vec` isn't `Copy`
-//! c2.with(|v| assert!(v.len() == 4));
+//! assert_eq!(c2.with(Vec::len), 4);
 //! let v = c2.get(); // Clones the vector
 //! ```
+//!
+//! [std-cell]: StdCell
+//! [cell-ext]: CellExt
+//! [`with`]: Cell::with
+//! [`with_mut`]: Cell::with_mut
+//! [std-get]: StdCell::get
+//! [std-set]: StdCell::set
+//! [`get`]: Cell::get
 
 use core::cell::Cell as StdCell;
 use core::cmp::Ordering;
@@ -158,10 +162,7 @@ impl<T> CellExt<T> for Cell<T> {
     where
         T: Clone + Default,
     {
-        let value = self.take();
-        let clone = value.clone();
-        self.set(value);
-        clone
+        self.with(T::clone)
     }
 
     fn with<F, R>(&self, f: F) -> R
