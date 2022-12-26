@@ -1,7 +1,8 @@
 [package]
 name = "cell-ref"
-version = "0.1.1"
+version = "0.1.2-dev"
 edition = "2018"
+rust-version = "1.41"
 description = "Cell type with methods for by-reference mutation"
 documentation = "https://docs.rs/cell-ref"
 readme = "misc/crate-readme.md"
