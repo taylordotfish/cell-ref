@@ -17,7 +17,7 @@
  */
 
 use cell_ref::{Cell, CellExt};
-use core::cell::Cell as StdCell;
+use std::cell::Cell as StdCell;
 
 #[derive(Default)]
 struct DefaultType(u8);
