@@ -61,9 +61,6 @@ use core::cmp::Ordering;
 use core::fmt;
 use core::ops::{Deref, DerefMut};
 
-#[cfg(test)]
-mod tests;
-
 /// A `Cell` type with methods for by-reference mutation and inspection.
 #[derive(Default)]
 pub struct Cell<T>(StdCell<T>);

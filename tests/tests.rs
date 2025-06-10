@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-use super::{Cell, CellExt};
+use cell_ref::{Cell, CellExt};
 use core::cell::Cell as StdCell;
 
 #[derive(Default)]
