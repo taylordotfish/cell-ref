@@ -67,7 +67,7 @@ pub struct Cell<T>(StdCell<T>);
 
 impl<T> Cell<T> {
     /// Creates a new [`Cell`] with the given value.
-    pub fn new(value: T) -> Self {
+    pub const fn new(value: T) -> Self {
         Self(StdCell::new(value))
     }
 }
